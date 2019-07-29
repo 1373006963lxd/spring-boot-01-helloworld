@@ -1,0 +1,32 @@
+如何打包：
+点击右边的maven，找到Lifecycle，选择里面的package双击即可。
+然后将打包好的jar包放到本地的任意一个地方，利用控制台直接运行jar包
+（java -jar 包名）
+
+springboot添加相关依赖位置：
+https://spring.io/projects（官网一变）
+
+springboot依赖仲裁：
+<parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.9.RELEASE</version>
+</parent>
+在其下面都有相关的依赖及版本号，不需要我们手动去设置版本，如果需要的版本号不一样
+可以自己在添加依赖的时候加上版本号
+
+注解解释：
+       @Configuration 配置类上来标注这个注解
+        配置类-----配置文件：配置类也是容器中的一个组件@Component
+
+       @EnableAutoConfiguration ：开启自动配置功能
+       @AutoConfigutationPackage： 自动配置包
+                        将主配置类（@SpringBootApplication标注的类）的所在包及
+                        下面所有子包里面的所有组件扫描到spring容器中。
+       @EnableAutoConfigurationimportSelector：导入哪些组件的选择器，会导入
+       非常多的自动配置类
+       有了自动配置类，免去了我们手动编写配置注入功能组件等的工作。
+
+       Springboot在启动的时候从类路径下的META-INF/springfactories中获取
+       EnableAutoConfiguration指定的值，将这些值作为自动配置类导入到容器中，自动配置类
+       就生效，帮我们进行自动配置工作。
